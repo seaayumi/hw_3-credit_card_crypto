@@ -10,7 +10,7 @@ module LuhnValidator
     sum = nums_a.reverse.each_slice(2).map do |x, y|
     	[(x * 2).divmod(10), y || 0]
     	end.flatten.inject(:+)
-    ((10 - sum) % 10) == check # implicit return
+    ((10 - sum) % 10) == check # implicit return / without the inner brackets, it failed against true numbers with '0' at the end (eg. 6011368353866440)
 
     # TODO: use the integers in nums_a to validate its last check digit
   end
