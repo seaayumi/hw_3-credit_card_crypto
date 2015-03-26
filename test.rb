@@ -5,7 +5,7 @@ def credit_card_valid?(account_number)
   #stringnum = "79927398713"
   #nums_a = stringnum.to_s.chars.map(&:to_i) # SS start code
 
-  digits = account_number.scan(/./).map(&:to_i)
+  digits = account_number.to_s.chars.map(&:to_i)
   check = digits.pop
 
   sum = digits.reverse.each_slice(2).map do |x, y|

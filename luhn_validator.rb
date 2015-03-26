@@ -7,10 +7,10 @@ module LuhnValidator
     nums_a = number.to_s.chars.map(&:to_i)
 
     check = nums_a.pop # pops(removes) the last digit so we can check/compare with the answer in the end
-    sum = digits.reverse.each_slice(2).map do |x, y|
-    	(x * 2).divmod(10), y || 0]
+    sum = nums_a.reverse.each_slice(2).map do |x, y|
+    	[(x * 2).divmod(10), y || 0]
     	end.flatten.inject(:+)
-    (10 - sum % 10) == check
+    (10 - sum % 10) == check # implicit return
 
     # TODO: use the integers in nums_a to validate its last check digit
   end
